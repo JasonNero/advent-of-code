@@ -1,1 +1,74 @@
 # advent-of-code-2020
+
+- [ ] 01
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 02
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 03
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 04
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 05
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 06
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 07
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 08
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 09
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 10
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 11
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 12
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 13
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 14
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 15
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 16
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 17
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 18
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 19
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 20
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 21
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 22
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 23
+    - [ ] Part 1
+    - [ ] Part 2
+- [ ] 24
+    - [ ] Part 1
+    - [ ] Part 2

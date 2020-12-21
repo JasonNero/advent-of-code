@@ -40,9 +40,7 @@ def gather_bag_count(color_dict, bag_count=1, outer_color="shiny gold"):
     inner_count = 0
     for num, inner_color in inner_combinations:
         num = int(num)
-        for i in range(1, num):
-            bag_count += 1
-            gather_bag_count(color_dict, bag_count, inner_color)
+        
 
     return bag_count
 
