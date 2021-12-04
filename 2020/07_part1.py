@@ -14,10 +14,10 @@ def build_dict_from_lines(line):
             color_num = element.strip().split(" ")[0]
             color_out = " ".join(element.strip().split(" ")[1:-1])
             color_dict[color_out].append((color_num, color_in))
-    
+
     return color_dict
 
-with open("adventofcode_07_input.txt", "r") as f:
+with open("07_input.txt", "r") as f:
     lines = f.readlines()
 
 color_dict = build_dict_from_lines(lines)
