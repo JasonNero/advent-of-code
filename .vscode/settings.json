@@ -1,5 +1,6 @@
 {
     "rust-analyzer.linkedProjects": [
         "./2023/rust/Cargo.toml",
-    ]
+    ],
+    "git.enabled": false
 }
