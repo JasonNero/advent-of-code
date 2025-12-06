@@ -1,18 +1,16 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
 #include <cassert>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 const int START_POS = 50;
 
-auto part_one(std::istream &in) -> int
-{
+auto part_one(std::istream& in) -> int {
     int current_pos = START_POS;
     int at_zero_count = 0;
 
-    for (std::string line; std::getline(in, line);)
-    {
+    for (std::string line; std::getline(in, line);) {
         if (line[0] == 'L')
             line[0] = '-';
         else if (line[0] == 'R')
@@ -27,13 +25,11 @@ auto part_one(std::istream &in) -> int
     return at_zero_count;
 }
 
-auto part_two(std::istream &in) -> int
-{
+auto part_two(std::istream& in) -> int {
     int current_pos = START_POS;
     int total_clicks = 0;
 
-    for (std::string line; std::getline(in, line);)
-    {
+    for (std::string line; std::getline(in, line);) {
         if (line[0] == 'L')
             line[0] = '-';
         else if (line[0] == 'R')
@@ -62,27 +58,25 @@ auto part_two(std::istream &in) -> int
     return total_clicks;
 }
 
-auto test_part_one() -> void
-{
-    std::istringstream test_input("L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82\n");
+auto test_part_one() -> void {
+    std::istringstream test_input{
+        "L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82\n"};
     assert(part_one(test_input) == 3);
 }
 
-auto test_part_two() -> void
-{
-    std::istringstream test_input("L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82\n");
+auto test_part_two() -> void {
+    std::istringstream test_input{
+        "L68\nL30\nR48\nL5\nR60\nL55\nL1\nL99\nR14\nL82\n"};
     assert(part_two(test_input) == 6);
 }
 
-auto main(int argc, char **argv) -> int
-{
+auto main(int argc, char** argv) -> int {
     test_part_one();
     test_part_two();
 
     std::string path = "../01.in";
     std::ifstream in(path);
-    if (!in)
-    {
+    if (!in) {
         std::cerr << "Failed to open '" << path << "'\n";
         return 2;
     }
