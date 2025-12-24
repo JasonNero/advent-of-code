@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import pytest
 
 test_input = """
@@ -27,13 +28,20 @@ class Bank:
                         # Only up to length-(digits - current_digit) can be taken
                         # and index cannot be already taken
                         # and index must be greater than previous indices
-                        if (current_index <= len(self.batteries) - (digits - current_digit) 
-                                and current_index not in selected_indices
-                                and current_index > max(selected_indices[:current_digit], default=-1)):
+                        if (
+                            current_index
+                            <= len(self.batteries) - (digits - current_digit)
+                            and current_index not in selected_indices
+                            and current_index
+                            > max(selected_indices[:current_digit], default=-1)
+                        ):
                             selected_powers[current_digit] = power
                             selected_indices[current_digit] = current_index
                             break
-        joltage = sum(power * (10 ** (digits - idx - 1)) for idx, power in enumerate(selected_powers))
+        joltage = sum(
+            power * (10 ** (digits - idx - 1))
+            for idx, power in enumerate(selected_powers)
+        )
         return joltage
 
 
@@ -55,18 +63,12 @@ def part_two(input_data: str) -> int:
     return total_joltage
 
 
-@pytest.mark.parametrize(
-    "input_data, expected_output", 
-    [(test_input, 357)]
-)
+@pytest.mark.parametrize("input_data, expected_output", [(test_input, 357)])
 def test_part_one(input_data: str, expected_output: int):
     assert part_one(input_data) == expected_output
 
 
-@pytest.mark.parametrize(
-    "input_data, expected_output", 
-    [(test_input, 3121910778619)]
-)
+@pytest.mark.parametrize("input_data, expected_output", [(test_input, 3121910778619)])
 def test_part_two(input_data: str, expected_output: int):
     assert part_two(input_data) == expected_output
 

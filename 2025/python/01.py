@@ -1,7 +1,9 @@
 from pathlib import Path
+
 import pytest
 
 start_pos = 50
+
 
 def part_one(input_data) -> int:
     current_pos = start_pos
@@ -15,6 +17,7 @@ def part_one(input_data) -> int:
             at_zero_count += 1
 
     return at_zero_count
+
 
 def part_two(input_data) -> int:
     current_pos = start_pos
@@ -48,6 +51,7 @@ def part_two(input_data) -> int:
 
     return total_clicks
 
+
 @pytest.mark.parametrize(
     "input_data, expected_output",
     [
@@ -56,6 +60,7 @@ def part_two(input_data) -> int:
 )
 def test_part_one(input_data, expected_output):
     assert part_one(input_data) == expected_output
+
 
 @pytest.mark.parametrize(
     "input_data, expected_output",
@@ -69,10 +74,11 @@ def test_part_one(input_data, expected_output):
         ("L150\nR50", 2),
         ("R150\nL50", 2),
         ("R150\nR50", 2),
-    ]
+    ],
 )
 def test_part_two(input_data, expected_output):
     assert part_two(input_data) == expected_output
+
 
 if __name__ == "__main__":
     with Path("../01.in").open() as f:
