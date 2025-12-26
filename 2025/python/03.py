@@ -13,14 +13,14 @@ class Bank:
     def __init__(self, blocks: str):
         self.batteries = [int(b) for b in blocks]
         self.battery_count = len(self.batteries)
-        self.battery_power_indices = {int(i): [] for i in range(10, 0, -1)}
+        self.battery_power_indices = {int(i): [] for i in range(9, 0, -1)}
         for idx, power in enumerate(self.batteries):
             self.battery_power_indices[power].append(idx)
 
     def calculate_joltage(self, digits=2) -> int:
         selected_powers = [-1] * digits
         selected_indices = [-1] * digits
-        for power in range(10, 0, -1):
+        for power in range(9, 0, -1):
             available_indices = self.battery_power_indices[power]
             for current_index in available_indices:
                 for current_digit in range(digits):
@@ -28,13 +28,14 @@ class Bank:
                         # Only up to length-(digits - current_digit) can be taken
                         # and index cannot be already taken
                         # and index must be greater than previous indices
-                        if (
-                            current_index
-                            <= len(self.batteries) - (digits - current_digit)
-                            and current_index not in selected_indices
-                            and current_index
-                            > max(selected_indices[:current_digit], default=-1)
-                        ):
+                        in_range = current_index <= self.battery_count - (
+                            digits - current_digit
+                        )
+                        not_selected = current_index not in selected_indices
+                        after_previous = current_index > max(
+                            selected_indices[:current_digit], default=-1
+                        )
+                        if in_range and not_selected and after_previous:
                             selected_powers[current_digit] = power
                             selected_indices[current_digit] = current_index
                             break
