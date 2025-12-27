@@ -83,11 +83,11 @@ class PaperRolls {
     }
 
     auto remove_accessible_rolls() -> int {
-	auto positions = get_accessible_positions();
-	for (const auto& pos : positions) {
-	    grid[pos.first][pos.second] = 0; // Remove the roll
-	}
-	return positions.size();
+        auto positions = get_accessible_positions();
+        for (const auto& pos : positions) {
+            grid[pos.first][pos.second] = 0; // Remove the roll
+        }
+        return positions.size();
     }
 
   private:
@@ -100,10 +100,6 @@ auto part_one(const std::string& in) -> int {
     PaperRolls rolls{in};
     // rolls.print_grid();
     auto accessible_positions = rolls.get_accessible_positions();
-    // std::cout << "Accessible positions:\n";
-    // for (const auto& pos : accessible_positions) {
-    //     std::cout << "(" << pos.first << ", " << pos.second << ")\n";
-    // }
     return accessible_positions.size();
 }
 
