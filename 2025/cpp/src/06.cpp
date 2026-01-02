@@ -10,6 +10,7 @@ const string TEST_INPUT = "123 328  51 64 \n"
 
 class Homework {
   public:
+    enum class ReadDirection { RowWise, ColumnWise };
     Homework(const string& input_data) {
         auto stream = istringstream{input_data};
         string line;
@@ -28,10 +29,10 @@ class Homework {
         }
     };
 
-    auto solve(bool col_first = true) -> long long {
+    auto solve(ReadDirection direction) const -> long long {
         vector<long long> results = {};
         // Split by operators first to create "Problems"
-        for (int i = 0; i < operator_indices.size(); ++i) {
+        for (size_t i = 0; i < operator_indices.size(); ++i) {
             size_t start_col = operator_indices[i];
             size_t end_col = (i + 1 < operator_indices.size())
                                  ? operator_indices[i + 1]
@@ -39,8 +40,8 @@ class Homework {
 
             vector<long long> numbers = {};
 
-            if (col_first) {
-                for (int col_idx = start_col; col_idx < end_col; ++col_idx) {
+            if (direction == ReadDirection::ColumnWise) {
+                for (size_t col_idx = start_col; col_idx < end_col; ++col_idx) {
                     string number_str = "";
                     for (size_t row_idx = 0; row_idx < grid.size() - 1;
                          ++row_idx) {
@@ -48,7 +49,7 @@ class Homework {
                             number_str += grid[row_idx][col_idx];
                         }
                     }
-                    if (number_str == "") {
+                    if (number_str.empty()) {
                         continue;
                     }
                     long long number = stoll(number_str);
@@ -57,7 +58,7 @@ class Homework {
             } else {
                 for (size_t row_idx = 0; row_idx < grid.size() - 1; ++row_idx) {
                     string number_str = "";
-                    for (int col_idx = start_col; col_idx < end_col;
+                    for (size_t col_idx = start_col; col_idx < end_col;
                          ++col_idx) {
                         if (grid[row_idx][col_idx] != ' ') {
                             number_str += grid[row_idx][col_idx];
@@ -71,18 +72,14 @@ class Homework {
             char op = grid.back()[start_col];
             switch (op) {
             case '+': {
-                long long sum = 0;
-                for (auto num : numbers) {
-                    sum += num;
-                }
+                long long sum =
+                    accumulate(numbers.begin(), numbers.end(), 0LL, plus<>());
                 results.push_back(sum);
                 break;
             }
             case '*': {
-                long long prod = 1;
-                for (auto num : numbers) {
-                    prod *= num;
-                }
+                long long prod = accumulate(numbers.begin(), numbers.end(), 1LL,
+                                            multiplies<>());
                 results.push_back(prod);
                 break;
             }
@@ -102,12 +99,12 @@ class Homework {
 
 auto part_one(const string& input_data) -> long long {
     auto homework = Homework(input_data);
-    return homework.solve(false);
+    return homework.solve(Homework::ReadDirection::RowWise);
 }
 
 auto part_two(const string& input_data) -> long long {
     auto homework = Homework(input_data);
-    return homework.solve(true);
+    return homework.solve(Homework::ReadDirection::ColumnWise);
 }
 
 auto test_part_one() -> void {
